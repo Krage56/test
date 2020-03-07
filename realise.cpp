@@ -23,8 +23,9 @@ Field_P::~Field_P() {
 
 
 Field_P& Field_P::operator=(const Field_P& newNum){
-    Field_P tmp(newNum);
-    return tmp;
+    _p = newNum._p;
+    _data = newNum._data;
+    return *this;
 }
 
 Field_P& Field_P::operator=(const long num){
@@ -46,24 +47,15 @@ Field_P& Field_P::operator[](const size_t base) {
 }
 
 Field_P Field_P::operator+(const Field_P& a) const {
-//    Field_P tmp;
-//    std::cout << "hereq" << std::endl;
     if(a._p != _p){
-        //Field_P tmp(_p, (a._data + _data) % _p);
-        //return  tmp;
-//        tmp[_p] = (a._data + _data) % _p;
-        std::cout << "here" << std::endl;
         Field_P error_obj(0, 0);
         return error_obj;
     }
     else{
         Field_P tmp(_p, (a._data + _data) % _p);
-        std::cout << "hereq" << std::endl;
         return tmp;
     }
 }
-    //Field_P error_obj(0, 0);
-    //return error_obj;
 
 
 Field_P Field_P::operator+(const long a) const {
@@ -74,7 +66,7 @@ Field_P Field_P::operator+(const long a) const {
 Field_P Field_P::operator*(const Field_P & a) const {
     if(a._p != _p){
         Field_P error_obj(0, 0);
-        //std::cout << "error" << std::endl;
+
         return error_obj;
     }
     long tmp_data = (a._data * _data) % _p;
@@ -86,13 +78,3 @@ Field_P Field_P::operator*(const long a) const {
     Field_P tmp(_p, (_data * (a % _p)) % _p);
     return tmp;
 }
-
-//Field_P& Field_P::operator-(Field_P & a) const {
-//    Field_P tmp(_p, _data - (a._data % _p));
-//    return tmp;
-//}
-//
-//Field_P& Field_P::operator-(long a) const {
-//    Field_P tmp(_p, _data - (a % _p));
-//    return tmp;
-//}
