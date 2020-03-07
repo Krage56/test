@@ -8,8 +8,8 @@ int main() {
     l1[8] = 9;
     std::cout << l1 << '\n';
     l2[8] = 7;
-    Field_P l3 ;//= l2 + l1;
+    Field_P l3;//(l2 + l1) ;//= l2 + l1;
     l3 = l2 + l1;
-    //std::cout << l2 + l1 << '\n';
+    std::cout << l3 << '\n';
     return 0;
 }
